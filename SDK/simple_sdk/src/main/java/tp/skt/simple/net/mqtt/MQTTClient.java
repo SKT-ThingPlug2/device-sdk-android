@@ -52,6 +52,7 @@ public class MQTTClient {
     private String password;
     private String version;
     private boolean enableSecure;
+    private boolean cleanSession;
 
     /**
      * MqttAndroidClient
@@ -76,7 +77,7 @@ public class MQTTClient {
      * @param password
      * @param version  if value is null, default value is 1.0
      */
-    MQTTClient(Context context, String baseUrl, String clientID, String userName, String password, String version, String[] subscribeTopics, boolean enableSecure) {
+    MQTTClient(Context context, String baseUrl, String clientID, String userName, String password, String version, String[] subscribeTopics, boolean enableSecure, boolean cleanSession) {
         this.context = context.getApplicationContext();
         this.baseUrl = baseUrl;
         this.clientID = clientID;
@@ -85,6 +86,7 @@ public class MQTTClient {
         this.version = (version == null ? Define.VERSION : version);
         this.subscribeTopics = subscribeTopics;
         this.enableSecure = enableSecure;
+        this.cleanSession = cleanSession;
     }
 
     /**
@@ -127,7 +129,9 @@ public class MQTTClient {
                 if (reconnect == true) {
                     Util.log("Reconnected to : " + serverURI);
                     // Because Clean Session is true, we need to re-subscribe
-                    // subscribeTopic();
+                    if(cleanSession){
+                        subscribeTopic();
+                    }
                 }
             }
 
@@ -237,9 +241,8 @@ public class MQTTClient {
         }
         try {
             int[] qosArray = new int[subscribeTopics.length];
-            for (int qos : qosArray) {
-                qos = 1;
-            }
+            Arrays.fill(qosArray, 1);
+
             mqttAndroidClient.subscribe(subscribeTopics, qosArray, null, new IMqttActionListener() {
                 @Override
                 public void onSuccess(IMqttToken asyncActionToken) {
@@ -324,6 +327,7 @@ public class MQTTClient {
         private String version;
         private String[] subscribeTopics;
         private boolean enableSecure = true;
+        private boolean cleanSession = true;
         private Context context;
 
 
@@ -423,11 +427,22 @@ public class MQTTClient {
         }
 
         /**
+         * set clean session
+         *
+         * @param cleanSession
+         * @return Builder
+         */
+        public Builder setCleanSession(boolean cleanSession) {
+            this.cleanSession = cleanSession;
+            return this;
+        }
+
+        /**
          * @return
          */
         public MQTTClient build() {
             Util.checkNull(baseUrl, "baseUrl = null");
-            return new MQTTClient(context, baseUrl, clientId, userName, password, version, subscribeTopics, enableSecure);
+            return new MQTTClient(context, baseUrl, clientId, userName, password, version, subscribeTopics, enableSecure, cleanSession);
         }
     }
 }

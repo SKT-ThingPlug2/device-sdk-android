@@ -31,6 +31,10 @@ public class SimpleConfiguration {
     private boolean enableSecure = true;
 
     /**
+     * clean session ( default true )
+     */
+    private boolean cleanSession = true;
+    /**
      *
      *
      */
@@ -114,5 +118,13 @@ public class SimpleConfiguration {
 
     public void setEnableSecure(boolean enableSecure) {
         this.enableSecure = enableSecure;
+    }
+
+    public boolean isCleanSession() {
+        return cleanSession;
+    }
+
+    public void setCleanSession(boolean cleanSession) {
+        this.cleanSession = cleanSession;
     }
 }
