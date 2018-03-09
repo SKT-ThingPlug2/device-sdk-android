@@ -223,5 +223,5 @@ Sample Device App 실행
 ## Resources
 * **[Sample Device/Service App Guide](Sample_App.md)** - Device & Service App 설명
 
-Copyright (c) 2017 SK Telecom Co., Ltd. All Rights Reserved.
-Distributed under Apache License Version 2.0.
+Copyright (c) 2018 SK telecom Co., Ltd. All Rights Reserved.
+Distributed under Apache License Version 2.0. See LICENSE for details.
