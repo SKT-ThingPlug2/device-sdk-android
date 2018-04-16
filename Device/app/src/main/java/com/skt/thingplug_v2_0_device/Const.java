@@ -25,7 +25,7 @@ public class Const {
     public static final String URL_GET_DEVICE_DESCRIPTIONS = "%s/api/v1/services/%s/device-descriptors?limit=" + GET_LENGTH_MAX;
     public static final String URL_REGIST_DEVICE = "%s/api/v1/services/%s/devices";
 
-    public static final boolean USE_TLS_DEFAULT = false;
+    public static final boolean USE_TLS_DEFAULT = true;
     // read time delay (msec)
     public static final int SENSOR_DEFAULT_READ_PERIOD = 1000;
     public static final int SENSOR_DEFAULT_REPORT_INTERVAL = 10000;

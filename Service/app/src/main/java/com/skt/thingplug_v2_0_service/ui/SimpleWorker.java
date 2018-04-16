@@ -116,9 +116,6 @@ public class SimpleWorker {
         }
 
         SimpleConfiguration simpleConfiguration = new SimpleConfiguration(host, clientId, userName, userPassword);
-        if(userInfo.getUseTLS()) {
-            simpleConfiguration.setEnableSecure(false);
-        }
         simple = new Simple(this.context, serviceName, deviceName, userName, simpleConfiguration,
                 simpleListener, true);
         simple.tpSimpleConnect();

@@ -23,7 +23,7 @@ public class Const {
     public static final String URL_GET_DEVICE_TOKEN_DEFAULT = "%s/api/v1/services/%s/devices/%s/credential";
     public static final String URL_GET_ATTRIBUTE_CHECK_DEFAULT = "%s/api/v1/dev/%s/%s/attribute";
 
-    public static final boolean USE_TLS_DEFAULT = false;
+    public static final boolean USE_TLS_DEFAULT = true;
     // read time delay (msec)
     public static final int SENSOR_DEFAULT_READ_PERIOD = 1000;
     public static final int SENSOR_DEFAULT_REPORT_INTERVAL = 10000;
