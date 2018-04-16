@@ -116,13 +116,13 @@ mqttServerAddress 값의 경우 TLS 사용을 위해서는 MQTT broker 주소앞
 
 TLS 사용 시, ThingPlug의 MQTT broker 주소는 다음과 같습니다.
 ```
-ssl://thingplug.net
+ssl://test.sktiot.com
 ```
 TLS를 사용하지 않을 경우, MQTT broker 주소앞에 `tcp://` 를 포함하면 됩니다. 포트번호가 `1883`인 경우 생략 가능합니다.
 
 TLS 미사용 시, ThingPlug의 MQTT broker 주소는 다음과 같습니다.
 ```
-tcp://thingplug.net
+tcp://test.sktiot.com
 ```
 
 loginName 과 loginPassword 는 디바이스로 동작할 경우와 애플리케이션으로 동작할 경우에 설정값이 아래와 같습니다.
@@ -207,8 +207,8 @@ __tpSimpleSubscribe__ | 디바이스정보를 모니터링 한다.
 
 ## Sample Application(s)
 * **[Simple Test App](SDK)** - Simple SDK 사용 Test App
-* **[Sample Device App](Device)** - Android 단말을 IoT Device로 동작하게 하는 App 
-* **[Sample Service App](Service)** - IoT Device의 원격 상태조회, 제어가 가능한 Service용 App
+* **[Sample Device App](https://github.com/SKT-ThingPlug2/mobile-app-android/tree/master/Device)** - Android 단말을 IoT Device로 동작하게 하는 App 
+* **[Sample Service App](https://github.com/SKT-ThingPlug2/mobile-app-android/tree/master/Service)** - IoT Device의 원격 상태조회, 제어가 가능한 Service용 App
 
 Sample Device App 실행
 ---
@@ -221,7 +221,7 @@ Sample Device App 실행
 ![androidTP.png](./images/androidTP.png)
 
 ## Resources
-* **[Sample Device/Service App Guide](Sample_App.md)** - Device & Service App 설명
+* **[Sample Device/Service App Guide](https://github.com/SKT-ThingPlug2/mobile-app-android)** - Device & Service App 설명
 
 Copyright (c) 2018 SK telecom Co., Ltd. All Rights Reserved.
 Distributed under Apache License Version 2.0. See LICENSE for details.
