@@ -94,11 +94,18 @@ public class MQTTClient {
      */
     public void disconnect() {
         if (mqttAndroidClient != null && mqttAndroidClient.isConnected()) {
-            try {
-                mqttAndroidClient.disconnect(null, null);
-            } catch (MqttException e) {
-                e.printStackTrace();
-            }
+
+            unsubscribeTopic(new IDoneCallback() {
+                @Override
+                public void onDone(boolean result, int errCode, String errMessage) {
+                    try {
+                        mqttAndroidClient.disconnect(null, null);
+                    } catch (MqttException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+
         }
     }
 
@@ -259,6 +266,24 @@ public class MQTTClient {
         } catch (Exception e) {
             e.printStackTrace();
             simpleListener.onSubscribeFailure();
+        }
+    }
+
+    private void unsubscribeTopic(final IDoneCallback callback) {
+        try {
+            mqttAndroidClient.unsubscribe(subscribeTopics, null, new IMqttActionListener() {
+                @Override
+                public void onSuccess(IMqttToken asyncActionToken) {
+                    callback.onDone(true, 0, null);
+                }
+
+                @Override
+                public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
+                    callback.onDone(false, -1, exception.getMessage());
+                }
+            });
+        } catch (MqttException e) {
+            e.printStackTrace();
         }
     }
 
